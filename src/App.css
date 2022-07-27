@@ -1,3 +1,8 @@
+body {
+  background-image: url(images/fabian-blank-pElSkGRA2NU-unsplash.jpg);
+  background-size: 90%;
+  color: black;
+}
 .login {
   display: flex;
   align-items: center;
@@ -11,9 +16,16 @@
   margin-top: 120px;
 }
 
-body {
-  background-image: url(images/fabian-blank-pElSkGRA2NU-unsplash.jpg);
-  background-size: 90%;
-  color: black;
+.header-email {
+  display: flex;
+  justify-content: left;
+  padding: 5px;
+}
+
+.header-expense {
+  display: flex;
+  justify-content: right;
+  padding: 5px;
+  padding-right: 50px;
 }
 

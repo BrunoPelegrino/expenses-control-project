@@ -15,11 +15,14 @@ class Header extends React.Component {
   render() {
     const { email, expenses } = this.props;
     return (
-      <header>
-        <p>Email:</p>
-        <h3 data-testid="email-field">
+      <header className="header">
+        <div className="header-email">
+        <h5>Email:</h5>
+        <h5 data-testid="email-field">
           { email }
-        </h3>
+        </h5>
+        </div>
+        <div className="header-expense">
         <span>Despesa total: R$</span>
         <span data-testid="total-field">
           { expenses.reduce((acc, item) => {
@@ -30,6 +33,7 @@ class Header extends React.Component {
         <span data-testid="header-currency-field">
           BRL
         </span>
+        </div>
       </header>
     );
   }

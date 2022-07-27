@@ -2,8 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { removeExpenseAction } from '../actions';
+import Table from 'react-bootstrap/Table';
 
-class Table extends React.Component {
+class TableExpense extends React.Component {
 handleClick = (id) => {
   const { removeExpense } = this.props;
   removeExpense(id);
@@ -12,7 +13,7 @@ handleClick = (id) => {
 render() {
   const { expenses } = this.props;
   return (
-    <table>
+    <Table striped bordered hover>
       <thead>
         <tr>
           <th>Id</th>
@@ -24,7 +25,8 @@ render() {
           <th>Câmbio utilizado</th>
           <th>Valor convertido</th>
           <th>Moeda de conversão</th>
-          <th>Editar/Excluir</th>
+          <th>Editar</th>
+          <th>Excluir</th>
         </tr>
       </thead>
       <tbody>
@@ -78,7 +80,7 @@ render() {
           ))
         }
       </tbody>
-    </table>
+    </Table>
   );
 }
 }
@@ -92,8 +94,8 @@ const mapDispatchToProps = (dispatch) => ({
   removeExpense: (id) => dispatch(removeExpenseAction(id)),
 });
 
-Table.propTypes = {
+TableExpense.propTypes = {
   expenses: PropTypes.arrayOf(PropTypes.object),
 }.isRequired;
 
-export default connect(mapStateToProps, mapDispatchToProps)(Table);
+export default connect(mapStateToProps, mapDispatchToProps)(TableExpense);
