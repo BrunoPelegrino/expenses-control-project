@@ -1,3 +1,19 @@
-.App {
-  text-align: center;
+.login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 180px;;
 }
+
+.title {
+  display: flex;
+  justify-content: center;
+  margin-top: 120px;
+}
+
+body {
+  background-image: url(images/fabian-blank-pElSkGRA2NU-unsplash.jpg);
+  background-size: 90%;
+  color: black;
+}
+

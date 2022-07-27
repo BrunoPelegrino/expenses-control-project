@@ -3,7 +3,12 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { addEmail } from '../actions';
-import './index.css'
+import Button from 'react-bootstrap/Button';
+import Col from 'react-bootstrap/Col';
+import Form from 'react-bootstrap/Form';
+import InputGroup from 'react-bootstrap/InputGroup';
+import Row from 'react-bootstrap/Row';
+import LoginTitle from '../components/LoginTitle';
 
 class Login extends React.Component {
   state = {
@@ -40,10 +45,21 @@ class Login extends React.Component {
   render() {
     const { buttonDisabled, email, password } = this.state;
     return (
-      <div>
-        <label htmlFor="email-input">
+      <Form>
+      <div className="title">
+        <LoginTitle />
+      </div>
+      <div className="login">
+        <Row className="align-items-center">
+        <Col xs="auto">
+        <Form.Label htmlFor="inlineFormInputGroup" visuallyHidden>
           Login:
-          <input
+        </Form.Label>
+          <InputGroup className="mb-5">
+          <InputGroup.Text>@</InputGroup.Text>
+          <Form.Control
+            id="inlineFormInputGroup"
+            placeholder="Username"
             onChange={ this.handleChange }
             name="email"
             data-testid="email-input"
@@ -51,10 +67,17 @@ class Login extends React.Component {
             email={ email }
             required
           />
-        </label>
-        <label htmlFor="password-input">
+          </InputGroup>
+
+        </Col>
+        <Col xs="auto">
+        <Form.Label htmlFor="inlineFormInput" visuallyHidden>
           Password:
-          <input
+          </Form.Label>
+          <Form.Control
+            className="mb-5"
+            id="inlineFormInput"
+            placeholder="Password"
             onChange={ this.handleChange }
             name="password"
             data-testid="password-input"
@@ -62,17 +85,21 @@ class Login extends React.Component {
             password={ password }
             required
           />
-        </label>
+        </Col>
         <Link to="/carteira">
-          <button
+          <Col xs="auto">
+          <Button className="mb-3"
             disabled={ buttonDisabled }
             type="submit"
             onClick={ this.handleClick }
           >
             Entrar
-          </button>
+          </Button>
+          </Col>
         </Link>
+        </Row>
       </div>
+      </Form>
     );
   }
 }
