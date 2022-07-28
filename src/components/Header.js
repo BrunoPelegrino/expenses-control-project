@@ -13,7 +13,7 @@ class Header extends React.Component {
   }
 
   render() {
-    const { email, expenses } = this.props;
+    const { email } = this.props;
     return (
       <header className="header">
         <div className="header-email">
@@ -21,18 +21,6 @@ class Header extends React.Component {
         <h5 data-testid="email-field">
           { email }
         </h5>
-        </div>
-        <div className="header-expense">
-        <span>Despesa total: R$</span>
-        <span data-testid="total-field">
-          { expenses.reduce((acc, item) => {
-            acc += +item.value * +(item.exchangeRates[item.currency].ask);
-            return acc;
-          }, 0).toFixed(2)}
-        </span>
-        <span data-testid="header-currency-field">
-          BRL
-        </span>
         </div>
       </header>
     );

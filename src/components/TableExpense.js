@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { removeExpenseAction } from '../actions';
 import Table from 'react-bootstrap/Table';
+import Button from 'react-bootstrap/Button';
+
 
 class TableExpense extends React.Component {
 handleClick = (id) => {
@@ -13,6 +15,7 @@ handleClick = (id) => {
 render() {
   const { expenses } = this.props;
   return (
+    <div>
     <Table striped bordered hover>
       <thead>
         <tr>
@@ -63,24 +66,40 @@ render() {
               </td>
               <td>Real</td>
               <td>
-                <button type="button">
+                <Button variant="outline-info"
+                type="button">
                   Editar
-                </button>
+                </Button>
               </td>
               <td>
-                <button
+                <Button variant="outline-danger" 
                   type="button"
                   onClick={ () => this.handleClick(expense.id) }
                   data-testid="delete-btn"
                 >
                   Excluir
-                </button>
+                  </Button>{' '}
               </td>
             </tr>
+            
           ))
+          
         }
       </tbody>
     </Table>
+      <div className="header-expense">
+        <span>Despesa total: R$</span>
+        <span data-testid="total-field">
+          { expenses.reduce((acc, item) => {
+            acc += +item.value * +(item.exchangeRates[item.currency].ask);
+            return acc;
+          }, 0).toFixed(2)}
+        </span>
+        <span data-testid="header-currency-field">
+          BRL
+        </span>
+        </div>
+        </div>
   );
 }
 }

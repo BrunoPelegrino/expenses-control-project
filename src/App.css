@@ -24,8 +24,9 @@ body {
 
 .header-expense {
   display: flex;
-  justify-content: right;
+  justify-content: left;
   padding: 5px;
   padding-right: 50px;
+  background-color:antiquewhite;
 }
 

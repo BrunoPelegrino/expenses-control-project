@@ -1,8 +1,13 @@
 import React from 'react';
 import propTypes from 'prop-types';
+import Button from 'react-bootstrap/Button';
 import { connect } from 'react-redux';
+import Form from 'react-bootstrap/Form';
 import { fetchExpensesThunk } from '../actions';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
 // import { saveExpensesAction } from '../actions';
+
 const alimentacao = 'Alimentação';
 
 const DEFAULT_STATE = {
@@ -40,9 +45,12 @@ class ExpensesForms extends React.Component {
     return (
       <div>
         <form>
+          <Row className="align-items-center">
+          <Col md>
           <label htmlFor="value-input">
             Valor da despesa:
-            <input
+            <Form.Control size="sm"
+              placeholder="Value"
               type="number"
               min={ 0 }
               data-testid="value-input"
@@ -51,26 +59,32 @@ class ExpensesForms extends React.Component {
               name="value"
             />
           </label>
-          <label htmlFor="description-input">
+          </Col>
+          <Col md>
+          <Form.Label htmlFor="description-input">
             Descrição:
-            <textarea
+            <Form.Control rows={1}
               data-testid="description-input"
               value={ description }
               onChange={ this.handleChange }
               name="description"
             />
-            <label htmlFor="moeda">
+            </Form.Label>
+            </Col>
+            <Col md>
+            <Form.Label htmlFor="moeda">
               Moeda:
-              <select
+              <Form.Select defaultValue="Choose..."
                 name="currency"
                 id="moeda"
                 onChange={ this.handleChange }
                 value={ currency }
               >
                 { currencies?.map((c, i) => <option value={ c } key={ i }>{c}</option>)}
-              </select>
-            </label>
-          </label>
+              </Form.Select>
+            </Form.Label>
+            </Col>
+            <Col md>
           <label htmlFor="method-input">
             Método de pagamento:
             <select
@@ -85,6 +99,8 @@ class ExpensesForms extends React.Component {
               <option>Cartão de débito</option>
             </select>
           </label>
+          </Col>
+          <Col md>
           <label htmlFor="tag-input">
             Tipo:
             <select
@@ -101,12 +117,17 @@ class ExpensesForms extends React.Component {
               <option>Saúde</option>
             </select>
           </label>
-          <button
+          </Col>
+          <Col md>
+          {' '}
+          <Button variant="success"
             type="button"
             onClick={ this.handleClick }
           >
             Adicionar despesa
-          </button>
+          </Button>
+          </Col>
+          </Row>
         </form>
       </div>
     );
